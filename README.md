@@ -23,7 +23,8 @@ Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance T
 </p>
 
 ## Getting Started
-Python 3.6+, Pytorch 1.2, torchvision 0.4, and other requirements.
+Python 3.6+, Pytorch 1.2, torchvision 0.4, cuda10.0, at least 8GB GPU memory and other requirements.
+All codes are tested on Linux Distributions (Ubutun 16.04 is recommended), and other platforms have not been tested yet.
 ### Requirements
 ``` bash
 pip install -r requirements.txt
@@ -50,7 +51,7 @@ unzip the `samples.zip` and move them to `assets` directory.
 
 
 ### Running Demo
-If you want to get the results of the demo shown in webpage, you can run the following scripts.
+If you want to get the results of the demo shown on the webpage, you can run the following scripts.
 The results are saved in `./outputs/results/demos`
 
 1. Demo of Motion Imitation
@@ -69,8 +70,8 @@ The results are saved in `./outputs/results/demos`
     ```
 
 
-### Running Scripts (examples) (Details)
-If you want to test other inputs (source image and reference images), here are some examples.
+### Running custom examples (Details)
+If you want to test other inputs (source image and reference images **from yourself**), here are some examples.
 Please replace the `--ip YOUR_IP` and `--port YOUR_PORT` for 
 [Visdom](https://github.com/facebookresearch/visdom) visualization. 
 
@@ -129,12 +130,20 @@ The details of each running scripts are shown in [runDetails.md](doc/runDetails.
 ### Training from Scratch
 The details are shown in [train.md](./doc/train.md) [TODO].
 
+## Announcement
+In our paper, the results of LPIPS reported in Table 1, are calculated by **1 – distance score**; 
+thereby, the larger is more similar between two images. The beginning intention of using **1 – distance score** is that it is more accurate to meet the definition of **Similarity** in LPIPS.
+
+However, most other papers use the original definition that LPIPS = distance score; 
+therefore, to eliminate the ambiguity and make it consistent with others, 
+we update the results in Table 1 with the original definition in the [latest paper](https://arxiv.org/pdf/1909.12224.pdf).
+
 ## Citation
 ![thunmbnail](assets/thumbnail.jpg)
 ```
 @InProceedings{lwb2019,
     title={Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance Transfer and Novel View Synthesis},
-    author={Wen Liu and Zhixin Piao, Min Jie, Wenhan Luo, Lin Ma and and Shenghua Gao},
+    author={Wen Liu and Zhixin Piao, Min Jie, Wenhan Luo, Lin Ma and Shenghua Gao},
     booktitle={The IEEE International Conference on Computer Vision (ICCV)},
     year={2019}
 }
